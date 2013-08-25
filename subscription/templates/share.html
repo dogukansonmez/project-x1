@@ -1,0 +1,200 @@
+{% extends "main.html" %}
+{% block content %}
+    <!-- C O N T E N T -->
+    <div class="content_wrapper">
+        <div class="content_block">
+            <h1><span>Once Upon a time</span></h1>
+
+            {% if user.is_anonymous %}
+                <a href="{% url "socialauth_begin" 'facebook' %}">login with facebook</a>
+            {% else %}
+                <p>This is story of {{ user.first_name }} {{ user.last_name }}</p> <a href="/logout/}">logout</a>
+            {% endif %}
+            <div class="contentarea">
+                <div class="row">
+                    <form class="form-horizontal" action="/share" method="POST">{% csrf_token %}
+                        <fieldset>
+                            <!-- Form Name -->
+                            <legend></legend>
+                            <!-- Text input-->
+                            <div class="row">
+                                <div class="span6">
+                                    <div class="control-group">
+                                        <label class="control-label" for="title">Title</label>
+
+                                        <div class="controls">
+                                            <input id="title" name="title" type="text"
+                                                   placeholder="The Curious Case of Benjamin Button"
+                                                   class="input-xlarge">
+                                        </div>
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="control-group">
+                                        <label class="control-label" for="where">Where</label>
+
+                                        <div class="controls">
+                                            <input id="where" name="where" type="text"
+                                                   placeholder="Somewhere over the rainbow"
+                                                   class="input-xlarge">
+                                        </div>
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="control-group">
+                                        <label class="control-label" for="when">When</label>
+
+                                        <div class="controls">
+                                            <input id="when" name="when" type="text" placeholder="1000"
+                                                   class="input-xlarge">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="span6">
+                                    <div class="row">
+                                        <div class="span2">
+                                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                <div class="fileupload-new thumbnail"
+                                                     style="width: 100px; height: 75px;"><img
+                                                        src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image"/>
+                                                </div>
+                                                <div class="fileupload-preview fileupload-exists thumbnail"
+                                                     style="max-width: 100px; max-height: 75px; line-height: 20px;"></div>
+                                                <div>
+                                                    <span class="btn btn-file"><span
+                                                            class="fileupload-new">Select image</span><span
+                                                            class="fileupload-exists">Change</span><input type="file"/></span>
+                                                    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">X</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="span2">
+                                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                <div class="fileupload-new thumbnail"
+                                                     style="width: 100px; height: 75px;"><img
+                                                        src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image"/>
+                                                </div>
+                                                <div class="fileupload-preview fileupload-exists thumbnail"
+                                                     style="max-width: 100px; max-height: 75px; line-height: 20px;"></div>
+                                                <div>
+                                                    <span class="btn btn-file"><span
+                                                            class="fileupload-new">Select image</span><span
+                                                            class="fileupload-exists">Change</span><input type="file"/></span>
+                                                    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">X</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="span2">
+                                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                <div class="fileupload-new thumbnail"
+                                                     style="width: 100px; height: 75px;"><img
+                                                        src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image"/>
+                                                </div>
+                                                <div class="fileupload-preview fileupload-exists thumbnail"
+                                                     style="max-width: 100px; max-height: 75px; line-height: 20px;"></div>
+                                                <div>
+                                                    <span class="btn btn-file"><span
+                                                            class="fileupload-new">Select image</span><span
+                                                            class="fileupload-exists">Change</span><input type="file"/></span>
+                                                    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">X</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="span5">
+                                    <!-- Text input-->
+                                    <div class="control-group">
+                                        <label class="control-label" for="withwhom">Whit Whom</label>
+
+                                        <div class="controls">
+                                            <input id="withwhom" name="withwhom" type="text"
+                                                   placeholder="Rambo,She-Ra,Arya Stark"
+                                                   class="input-xlarge">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="span2">
+                                    <div class="control-group">
+                                        <label class="control-label" for="video">Video link</label>
+
+                                        <div class="controls">
+                                            <input id="video" name="video" type="text"
+                                                   placeholder="http://www.youtube.com/bla/bla/bla"
+                                                   class="input-xlarge">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- Multiple Radios (inline) -->
+                            <div class="control-group">
+                                <label class="control-label" for="radios">How great was it</label>
+
+                                <div class="controls">
+                                    <label class="radio inline" for="radios-0">
+                                        <input type="radio" name="radios" id="radios-0" value="1">
+                                        1
+                                    </label>
+                                    <label class="radio inline" for="radios-1">
+                                        <input type="radio" name="radios" id="radios-1" value="2">
+                                        2
+                                    </label>
+                                    <label class="radio inline" for="radios-2">
+                                        <input type="radio" name="radios" id="radios-2" value="3">
+                                        3
+                                    </label>
+                                    <label class="radio inline" for="radios-3">
+                                        <input type="radio" name="radios" id="radios-3" value="4">
+                                        4
+                                    </label>
+                                    <label class="radio inline" for="radios-4">
+                                        <input type="radio" name="radios" id="radios-4" value="5" checked="checked">
+                                        5
+                                    </label>
+
+                                </div>
+                            </div>
+
+                            <!-- Textarea -->
+                            <div class="control-group">
+                                <label class="control-label" for="description">What did yo do</label>
+
+                                <div class="controls">
+                                    <textarea id="description" name="description"
+                                              placeholder="You cannot believe it..."></textarea>
+                                </div>
+                            </div>
+
+                            <legend></legend>
+                            <!-- Button -->
+                            <div class="control-group">
+                                <label class="control-label" for="save">Share</label>
+
+                                <div class="controls">
+                                    <button id="save" name="save" class="btn btn-primary">Go!!!</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+
+
+                    <div class="clear"><!-- ClearFix --></div>
+
+                </div>
+                <!-- .row -->
+            </div>
+        </div>
+        <!-- .content_block -->
+    </div>
+
+
+    <!-- F O O T E R -->
+{% endblock %}
