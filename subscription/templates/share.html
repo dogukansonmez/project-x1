@@ -12,7 +12,7 @@
             {% endif %}
             <div class="contentarea">
                 <div class="row">
-                    <form class="form-horizontal" action="/share" method="POST">{% csrf_token %}
+                    <form class="form-horizontal" action="/share" method="POST" enctype="multipart/form-data">{% csrf_token %}
                         <fieldset>
                             <!-- Form Name -->
                             <legend></legend>
@@ -44,7 +44,7 @@
                                     <div class="control-group">
                                         <label class="control-label" for="when">When</label>
                                         <div id="datex"  class="controls date">
-                                            <input id="when" type="text" class="input-xlarge"><span class="add-on"></span>
+                                            <input id="when" name="when"  type="text" class="input-xlarge"><span class="add-on"></span>
                                         </div>
                                         <script type="text/javascript">
                                             $('#datex').datepicker({
@@ -59,6 +59,7 @@
                                     <div class="row">
                                         <div class="span2">
                                             <div class="fileupload fileupload-new" data-provides="fileupload">
+
                                                 <div class="fileupload-new thumbnail"
                                                      style="width: 100px; height: 75px;"><img
                                                         src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image"/>
@@ -68,7 +69,7 @@
                                                 <div>
                                                     <span class="btn btn-file"><span
                                                             class="fileupload-new">Select image</span><span
-                                                            class="fileupload-exists">Change</span><input type="file"/></span>
+                                                            class="fileupload-exists">Change</span><input type="file" id="file1" name="file1"/></span>
                                                     <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">X</a>
                                                 </div>
                                             </div>
@@ -84,7 +85,7 @@
                                                 <div>
                                                     <span class="btn btn-file"><span
                                                             class="fileupload-new">Select image</span><span
-                                                            class="fileupload-exists">Change</span><input type="file"/></span>
+                                                            class="fileupload-exists">Change</span><input type="file" id="file2" name="file2"/></span>
                                                     <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">X</a>
                                                 </div>
                                             </div>
@@ -100,7 +101,7 @@
                                                 <div>
                                                     <span class="btn btn-file"><span
                                                             class="fileupload-new">Select image</span><span
-                                                            class="fileupload-exists">Change</span><input type="file"/></span>
+                                                            class="fileupload-exists">Change</span><input type="file" id="file3" name="file3"/></span>
                                                     <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">X</a>
                                                 </div>
                                             </div>

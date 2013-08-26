@@ -1,15 +1,24 @@
+from subscription.models import Experience
+
 __author__ = 'dogukansonmez'
 
 class SharedExp:
     def __init__(self, httpRequest):
-       title = httpRequest.get('title','')
-       where = httpRequest.get('where','')
-       when = httpRequest.get('when','')
-       whitWhom = httpRequest.get('whitWhom','')
-       vote = httpRequest.get('vote','')
-       description = httpRequest.get('description','')
+       self.title = httpRequest.get('title','')
+       self.where = httpRequest.get('where','')
+       self.when = httpRequest.get('when','')
+       self.whitWhom = httpRequest.get('whitWhom','')
+       self.vote = httpRequest.get('vote','')
+       self.description = httpRequest.get('description','')
 
     def getExperience(self):
-        return ''
+        experience = Experience()
+        experience.title = self.title
+        experience.where = self.where
+        experience.when = self.when
+        experience.withWhom = self.whitWhom
+        experience.description = self.description
+        experience.vote = self.vote
+        return experience
 
 
