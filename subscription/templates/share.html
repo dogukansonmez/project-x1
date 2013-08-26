@@ -43,11 +43,15 @@
                                     <!-- Text input-->
                                     <div class="control-group">
                                         <label class="control-label" for="when">When</label>
-
-                                        <div class="controls">
-                                            <input id="when" name="when" type="text" placeholder="1000"
-                                                   class="input-xlarge">
+                                        <div id="datex"  class="controls date">
+                                            <input id="when" type="text" class="input-xlarge"><span class="add-on"></span>
                                         </div>
+                                        <script type="text/javascript">
+                                            $('#datex').datepicker({
+                                                autoclose: true,
+                                                todayHighlight: true
+                                            });
+                                        </script>
                                     </div>
 
                                 </div>
@@ -163,6 +167,8 @@
                                 </div>
                             </div>
 
+
+
                             <!-- Textarea -->
                             <div class="control-group">
                                 <label class="control-label" for="description">What did yo do</label>
@@ -194,7 +200,6 @@
         </div>
         <!-- .content_block -->
     </div>
-
 
     <!-- F O O T E R -->
 {% endblock %}
