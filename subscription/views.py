@@ -37,8 +37,9 @@ def share(request):
         print request.user.last_name
         print myuser.username
         print myuser.email
-        save_image_files(request)
+        #save_image_files(request)
         experience = SharedExp(request.POST).getExperience()
+        Experience.save(experience)
         return render_to_response('share.html', context_instance=RequestContext(request))
     else:
         return render_to_response('share.html', context_instance=RequestContext(request))

@@ -13,12 +13,15 @@ class SharedExp:
 
     def getExperience(self):
         experience = Experience()
+        experience.name = self.title
+        experience.type='typeB'
         experience.title = self.title
         experience.where = self.where
-        experience.when = self.when
+        experience.when = str(self.when)
         experience.withWhom = self.whitWhom
         experience.description = self.description
-        experience.vote = self.vote
+        experience.vote = 10
+        experience.commentCount=0
         return experience
 
 
