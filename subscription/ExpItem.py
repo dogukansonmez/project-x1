@@ -12,9 +12,10 @@ class ExpItem:
         #self.tags = experience.tags
         date = experience.postDate
         self.postDate = date.strftime("%B") + ' - '  + str(date.day) + ' - ' + str(date.year)
-        self.image = experience.img_links
-        self.video =experience.video_links
-        self.text = experience.description[:100]
         self.numberOfComments = experience.commentCount
+        if not not experience.img_links:
+            imgurl = experience.img_links.split(',')[0]
+            self.image = "pictures/%s"%imgurl
+        self.text = experience.description[:100]
 
 

@@ -11,21 +11,25 @@ class SharedExp:
        self.where = httpRequest.get('where','')
        self.when = httpRequest.get('when','')
        self.whitWhom = httpRequest.get('whitWhom','')
-       self.vote = httpRequest.get('vote','')
+       self.vote = httpRequest.get('radios','')
        self.description = httpRequest.get('description','')
 
-    def getExperience(self):
+
+    def getExperience(self,images):
         experience = Experience()
         experience.name = self.title
-        experience.type='typeB'
         experience.title = self.title
         experience.where = self.where
         experience.when = str(self.when)
         experience.withWhom = self.whitWhom
         experience.description = self.description
-        experience.vote = 10
+        experience.vote = self.vote
         experience.commentCount=0
-        #experience.postDate = datetime.datetime.today()
+        if len(images) > 0:
+            experience.img_links = ','.join(images)
+            experience.type='typeA'
+        else:
+            experience.type='typeB'
         return experience
 
 
