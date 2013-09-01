@@ -12,7 +12,7 @@ class Experience(models.Model):
     img_links = models.TextField()
     video_links = models.TextField()
     description = models.TextField()
-    postDate = models.TextField()
+    postDate = models.DateTimeField(auto_now=True)
     tags = models.TextField()
     commentCount = models.IntegerField()
 

@@ -1,6 +1,9 @@
+import calendar
+import datetime
 from subscription.models import Experience
 
 __author__ = 'dogukansonmez'
+
 
 class SharedExp:
     def __init__(self, httpRequest):
@@ -22,6 +25,7 @@ class SharedExp:
         experience.description = self.description
         experience.vote = 10
         experience.commentCount=0
+        #experience.postDate = datetime.datetime.today()
         return experience
 
 

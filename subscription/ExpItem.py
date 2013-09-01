@@ -1,25 +1,20 @@
+import datetime
+from django.db.models import DateTimeField
+
 __author__ = 'dogukansonmez'
 
 class ExpItem:
-    id = ""
-    type = ""
-    title = ""
-    tags = ""
-    postDate = ""
-    image = ""
-    video = ""
-    text = ""
-    numberOfComments= 0
 
     def __init__(self, experience):
-        ExpItem.id = experience.id
-        ExpItem.type = experience.type
-        ExpItem.title = experience.title
-        ExpItem.tags = experience.tags
-        ExpItem.postDate = experience.postDate
-        ExpItem.image = experience.img_links
-        ExpItem.video =experience.video_links
-        ExpItem.text = experience.description[:100]
-        ExpItem.numberOfComments = experience.commentCount
+        self.id = experience.id
+        self.type = experience.type
+        self.title = experience.title
+        #self.tags = experience.tags
+        date = experience.postDate
+        self.postDate = date.strftime("%B") + ' - '  + str(date.day) + ' - ' + str(date.year)
+        self.image = experience.img_links
+        self.video =experience.video_links
+        self.text = experience.description[:100]
+        self.numberOfComments = experience.commentCount
 
 
