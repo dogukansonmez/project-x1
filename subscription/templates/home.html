@@ -17,7 +17,7 @@
                     <a href="{{STATIC_URL}}{{ blogItem.image }}" class="ico_zoom prettyPhoto"><span></span></a>
                 </div>
                 <div class="blog_info">
-                    {{ blogItem.postDate }} Tags:  <a href="#">{{ blogItem.tags }}</a>
+                    {{ blogItem.postDate }}
                 </div>
                 <hr class="masonry_blog_seperator">
 
@@ -30,7 +30,7 @@
 
                 <hr class="masonry_blog_seperator">
                 <div class="post_bottom">
-                    <div class="comments">{{ blogItem.numberOfComments }} comments <span>|</span></div>
+                    <div class="comments">{{ blogItem.numberOfComments }} comments <span>|</span><a href="#">View all</a></div>
                     <div class="share">
                         <span>Share on</span><a href="#" class="share_twitter share_icon"></a><a href="#" class="share_pinterest share_icon"></a><a href="#" class="share_facebook share_icon"></a>
                     </div>
@@ -76,7 +76,7 @@
                             src="{{ blogItem.video }}"></iframe>
                 </div>
                 <div class="blog_info">
-                    {{ blogItem.postDate }} <a href="#">Art</a>. Tags: <a href="#">{{ blogItem.tags }}</a>
+                    {{ blogItem.postDate }}
                 </div>
                 <hr class="masonry_blog_seperator">
                 <div class="blogpost_title"><span class="blog_posttype blog_video"></span><a href="experience/{{ blogItem.id }}" class="mainTitlePermalink">
@@ -87,53 +87,6 @@
                 <hr class="masonry_blog_seperator">
                 <div class="post_bottom">
                     <div class="comments">{{ blogItem.numberOfComments }}  comments <span>|</span> </div>
-                    <div class="share">
-                        <span>Share on</span><a href="#" class="share_twitter share_icon"></a><a href="#" class="share_pinterest share_icon"></a><a href="#" class="share_facebook share_icon"></a>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
-        </div><!-- .blog_item -->
-    {% endifequal %}
-
-    {% ifequal blogItem.type "typeD" %}
-
-        <div class="blog_item">
-            <div class="preview_wrapper">
-                <div class="camera_slider">
-                    <div class="camera_wrap camera_azure_skin masonry_blog_slider">
-                        <div data-thumb="img/camera_slider/img6.jpg" data-src="{{STATIC_URL}}img/camera_slider/img6.jpg">
-                            <div class="camera_caption fadeFromLeft">
-                                <h3>sit amet</h3>
-                                <p>Maecenas mattis suscipit neque!</p>
-                            </div>
-                        </div>
-                        <div  data-thumb="img/camera_slider/img2.jpg" data-src="{{STATIC_URL}}img/camera_slider/img2.jpg">
-                            <div class="camera_caption fadeFromLeft">
-                                <h3>Nulla facilisi</h3>
-                                <p>At vero eos et accusamus et.</p>
-                            </div>
-                        </div>
-                        <div  data-thumb="img/camera_slider/img4.jpg" data-src="{{STATIC_URL}}img/camera_slider/img4.jpg">
-                            <div class="camera_caption fadeFromLeft">
-                                <h3>Nulla facilisi</h3>
-                                <p>Vestibulum etus nulla, consect.</p>
-                            </div>
-                        </div>
-                    </div><!-- .camera_slider_run -->
-                    <div class="clear"><!-- ClearFix --></div>
-                </div><!-- .camera_slider -->
-                <div class="blog_info">
-                    25 apr 2019 in <a href="#">Art</a>. Tags: <a href="#">TypeD,</a> <a href="#">amsterdam,</a> <a href="#">city</a>
-                </div>
-                <hr class="masonry_blog_seperator">
-                <div class="blogpost_title"><span class="blog_posttype blog_slider"></span><a href="experience/{{ blogItem.id }}" class="mainTitlePermalink"><h3>slider post. lorem ipsum dolor</h3></a></div>
-                <article class="contentarea">
-                    <p>Duis ac sem dui. Vestibulum id ante felis. Morbi sapien sems iaculisеtes et molestie ut, venenatis sed nulla. Nullam a eget tellus. <a href="#">Read more...</a></p>
-                </article>
-                <hr class="masonry_blog_seperator">
-                <div class="post_bottom">
-                    <div class="comments">15 comments <span>|</span></div>
                     <div class="share">
                         <span>Share on</span><a href="#" class="share_twitter share_icon"></a><a href="#" class="share_pinterest share_icon"></a><a href="#" class="share_facebook share_icon"></a>
                     </div>

@@ -1,6 +1,7 @@
 import calendar
 import datetime
-from subscription.models import Experience
+from django.contrib.auth import get_user
+from subscription.models import Experience, User
 
 __author__ = 'dogukansonmez'
 
@@ -15,7 +16,8 @@ class SharedExp:
        self.description = httpRequest.get('description','')
 
 
-    def getExperience(self,images):
+    def getExperience(self,request,images):
+
         experience = Experience()
         experience.name = self.title
         experience.title = self.title
@@ -30,6 +32,18 @@ class SharedExp:
             experience.type='typeA'
         else:
             experience.type='typeB'
+        currentUser = get_user(request)
+        try:
+            user = User.objects.get(userID=str(currentUser.username))
+        except User.DoesNotExist:
+            user = User()
+            user.firstName = currentUser.first_name
+            user.lastName = currentUser.last_name
+            user.userID = currentUser.username
+            user.save()
+            experience.owner = user
+        else:
+            experience.owner = user
         return experience
 
 

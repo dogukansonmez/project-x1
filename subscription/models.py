@@ -1,8 +1,13 @@
 from django.db import models
 
+class User(models.Model):
+    userID = models.TextField()
+    firstName = models.TextField()
+    lastName = models.TextField()
+
 class Experience(models.Model):
     name = models.TextField()
-    owner = models.TextField()
+    owner = models.ForeignKey("User")
     type = models.TextField()
     title = models.TextField()
     where = models.TextField()
@@ -21,7 +26,7 @@ class Experience(models.Model):
 
 class Comment(models.Model):
     name = models.TextField()
-    owner = models.TextField()
+    owner = models.ForeignKey("User")
     text= models.TextField()
     experience = models.ForeignKey(Experience)
     date = models.TextField()
@@ -29,10 +34,4 @@ class Comment(models.Model):
     def __unicode__(self):
         return self.name
 
-class Image(models.Model):
-    title = models.CharField(max_length=60, blank=True, null=True)
-    image = models.FileField(upload_to="images/")
-
-    def __unicode__(self):
-        return self.image.name
 

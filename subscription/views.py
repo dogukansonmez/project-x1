@@ -3,7 +3,6 @@ from django.contrib.auth import logout, get_user
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 import time
-from subscription.UserManager import UserManager
 from subscription.ExpItem import ExpItem
 from subscription.SharedExp import SharedExp
 from subscription.models import Experience, Comment
@@ -19,8 +18,8 @@ def home(request):
 def about(request):
     return render_to_response('about.html', context_instance=RequestContext(request))
 
-def generateFileName(extension):
-    return str(int(time.time())) + "." + extension
+def generateFileName(extension,i):
+    return str(int(time.time())) + str(i) + "." + extension
 
 def createFolderForCurrentUser(userPath):
     userPath = "static" + userPath
@@ -30,19 +29,21 @@ def createFolderForCurrentUser(userPath):
     return folderPath
 
 
-def getUserFolder():
-    currentUserName = UserManager().getCurrentUser()
+def getUserFolder(currentUserName):
     folderPath = "/pictures/" + currentUserName
     return folderPath
 
 
 def save_image_files(request):
     images = []
+    i = 0
     if request.FILES is not None:
         for fileName,file in request.FILES.iteritems():
+            name = generateFileName(file.name.split(".")[-1],i)
+            i= i+1
+            #TODO error check
+            userFolder = getUserFolder(get_user(request).username)
 
-            name = generateFileName(file.name.split(".")[-1])
-            userFolder = getUserFolder()
             imgFolder = createFolderForCurrentUser(userFolder)
 
             filePath = os.path.join(APP_ROOT, imgFolder, name)
@@ -54,13 +55,20 @@ def save_image_files(request):
                     destination.write(chunk)
     return images
 
+
+def isValidateUser(request):
+    return True
+
+
 def share(request):
     if request.method == 'POST':
-        images = save_image_files(request)
-        experience = SharedExp(request.POST).getExperience(images)
-        experience.save()
-        return redirect('subscription.views.home')
-        #render_to_response('home.html', context_instance=RequestContext(request))
+        if isValidateUser(request):
+            images = save_image_files(request)
+            experience = SharedExp(request.POST).getExperience(request,images)
+            experience.save()
+            return redirect('subscription.views.home')
+        else:
+            return render_to_response('share.html', context_instance=RequestContext(request))
     else:
         return render_to_response('share.html', context_instance=RequestContext(request))
 
