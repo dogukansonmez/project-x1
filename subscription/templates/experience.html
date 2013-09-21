@@ -56,66 +56,11 @@
                             </div>
                             <!-- .blog_post_preview -->
 
-                            <h3 class="postcomment">{{ comments|length }} comments<a name="comments"></a></h3>
-
-                            {% for comment in comments %}
-                                <ol class="commentlist">
-                                    <li class="comment">
-                                        <div class="stand_comment">
-                                            <div class="commentava">
-                                                <img src="img/avatars/avatar2.jpg" alt="">
-                                            </div>
-                                            <div class="thiscommentbody">
-                                                <div class="comment_info">
-                                                    <span class="author_name"><a href="#">{{ comment.owner }}</a></span>|
-                                                    <span class="date">{{ comment.date }}</span>|
-                                                    <span class="comments"><a href="#">Reply</a></span>
-                                                </div>
-                                                {{ comment.text }}
-                                            </div>
-                                        </div>
-                                        <ul class="children">
-                                            <li class="comment">
-                                                <div class="stand_comment">
-                                                    <div class="commentava">
-                                                        <img src="img/avatars/avatar1.jpg" alt="">
-                                                    </div>
-                                                    <div class="thiscommentbody">
-                                                        <div class="comment_info">
-                                                            <span class="author_name"><a href="#">Anna Smith</a></span>|
-                                                            <span class="date">22 apr 2019</span>|
-                                                            <span class="comments"><a href="#">Reply</a></span>
-                                                        </div>
-                                                        <p>Sapien nisi, tempus vel fermentum non esteros tincidunt id
-                                                            dolor. Cras feugiat diam eget augue pellentesque net
-                                                            lapidus. suscipit nisi consectetur. </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ol>
-                            {% endfor %}
-                            <!-- .commentlist -->
+                                   <!-- .commentlist -->
 
                             <h3 class="postcomment">leave a comment!</h3>
 
-                            <div class="contact_inputs">
-                                <form name="comment-form" method="post" action="" class="comment-form">
-                                    <p>All fields marked with an asterisk* are required.</p>
-                                    <input type="text" value="Name*" title="Name*" id="author" name="author"
-                                           class="form_field">
-                                    <input type="text" value="Email*" title="Email*" id="email" name="email"
-                                           class="form_field">
-                                    <input type="text" value="Web" title="Web" id="web" name="web" class="form_field">
-                                    <textarea name="comment-message" cols="45" rows="5" title="Message..."
-                                              id="comment-message" class="form_field">Message...</textarea>
-                                    <input type="reset" name="reset" id="reset" value="Clear form"
-                                           class="comment_reset">
-                                    <input type="button" name="submit" class="send_comment" id="submit"
-                                           value="Send comment">
-                                </form>
-                            </div>
+                            <div class="fb-comments" data-href="http://experience.com:8080/experience/{{ experience.id }}" data-width="970"></div>
 
                         </div>
                     </div>
