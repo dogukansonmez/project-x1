@@ -5,7 +5,7 @@ from django.template import RequestContext
 import time
 from subscription.ExpItem import ExpItem
 from subscription.SharedExp import SharedExp
-from subscription.models import Experience, Comment
+from subscription.models import Experience
 
 APP_ROOT = os.path.dirname(globals()['__file__'])
 
@@ -80,9 +80,8 @@ def getExperienceImages(img_links):
 def experiencePage(request, id):
     experience = Experience.objects.get(pk=id)
     #TODO check out if experience is null or not
-    comments= Comment.objects.filter(experience=id).all()
     imagesOfExperience = getExperienceImages(experience.img_links)
-    return render_to_response('experience.html', {'experience': experience, 'comments': comments,'images':imagesOfExperience},
+    return render_to_response('experience.html', {'experience': experience,'images':imagesOfExperience},
         context_instance=RequestContext(request))
 
 

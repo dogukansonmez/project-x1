@@ -24,14 +24,6 @@ class Experience(models.Model):
     def __unicode__(self):
         return self.name
 
-class Comment(models.Model):
-    name = models.TextField()
-    owner = models.ForeignKey("User")
-    text= models.TextField()
-    experience = models.ForeignKey(Experience)
-    date = models.TextField()
 
-    def __unicode__(self):
-        return self.name
 
 
