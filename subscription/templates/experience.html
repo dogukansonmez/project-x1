@@ -11,73 +11,66 @@
                     <div class="row">
                         <div class="span_full">
                             <div class="blog_post_preview">
-                                <legend></legend>
-                               {% if images|length > 0 %}
-                                <div class="camera_slider">
-                                    <div class="camera_wrap camera_azure_skin camera_slider_run">
-                                        {% for image in images %}
-                                        <div data-thumb="{{ STATIC_URL }}{{ image }}"
-                                             data-src="{{ STATIC_URL }}{{ image }}">
+                                {% if images|length > 0 %}
+                                    <legend></legend>
+                                    <div class="camera_slider">
+                                        <div class="camera_wrap camera_azure_skin camera_slider_run">
+                                            {% for image in images %}
+                                                <div data-thumb="{{ STATIC_URL }}{{ image }}"
+                                                     data-src="{{ STATIC_URL }}{{ image }}">
+                                                </div>
+                                            {% endfor %}
+
                                         </div>
-                                        {% endfor %}
-
+                                        <!-- .camera_slider_run -->
+                                        <div class="clear"><!-- ClearFix --></div>
                                     </div>
-                                    <!-- .camera_slider_run -->
-                                    <div class="clear"><!-- ClearFix --></div>
-                                </div>
                                 {% endif %}
-                                <legend></legend>
                                 <!-- .camera_slider -->
-                                <div class="blog_info">
-                                    <span class="blog_posttype blog_slider"></span>
-                                    <span class="date">{{ experience.postDate }}<br></span>
-                                    <span class="author_name"><br><strong>Posted by:</strong> <a
-                                            href="#">{{ experience.owner.firstName }} {{ experience.owner.lastName  }}</a></span>
-                                    <span class="comments"><strong>Comments:</strong> <a
-                                            href="blogpost_full.html#comments">{{ comments|length }}</a></span>
-
-                                    <div class="like_icons">
-                                        <a href="#" class="like_facebook"></a>
-                                        <a href="#" class="like_p"></a>
-                                        <a href="#" class="like_tweet"></a>
-                                    </div>
-                                </div>
-                                <!-- .blog_info -->
-                                <div class="blog_post_text">
-                                    <article class="contentarea">
-                                        {{ experience.description }}
-                                    </article>
-                                </div>
-                                <!-- .blog_post_text -->
-
-
-
-                                <div class="clear"></div>
                             </div>
-                            <!-- .blog_post_preview -->
-
-                                   <!-- .commentlist -->
-
-                            <h3 class="postcomment">leave a comment!</h3>
-
-                            <div class="fb-comments" data-href="http://experience.com:8080/experience/{{ experience.id }}" data-width="970"></div>
-
+                            <div class="module_content blockquote testimonials_list carouselslider" data-count="1">
+                                <ul>
+                                    <li>
+                                        <div class="item">
+                                            <div class="testimonials_photo">
+                                                <img src="https://graph.facebook.com/{{ experience.owner.userID }}/picture">
+                                            </div>
+                                            <div class="testimonials_text">
+                                                <P>{{ experience.description }}</P>
+                                                <span class="author">{{ experience.owner.firstName }}&nbsp;{{ experience.owner.lastName }}</span>
+                                                <span class="author_position">&nbsp;&nbsp;&nbsp;{{ experience.postDate }}</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <!--.row -->
+                        </div>
+                        <!-- .blog_post_preview -->
+                    <div class="clear"><!-- ClearFix --></div>
+                    <!-- .commentlist -->
+                    <legend></legend>
+                    <h5 class="postcomment">leave a comment!</h5>
+                    <p></p>
+                    <div class="fb-comments" data-href="http://experience.com:8080/experience/{{ experience.id }}"
+                         data-width="970"></div>
+
                 </div>
-                <div class="left-sidebar-block">
-                    <!-- Left Sidebar Text -->
-                </div>
-                <!-- .left-sidebar -->
-                <div class="clear"><!-- ClearFix --></div>
             </div>
-            <!-- .fl-container -->
-            <div class="right-sidebar-block">
-            </div>
-            <!-- .right-sidebar -->
-            <div class="clear"><!-- ClearFix --></div>
+            <!--.row -->
         </div>
+        <div class="left-sidebar-block">
+            <!-- Left Sidebar Text -->
+        </div>
+        <!-- .left-sidebar -->
+        <div class="clear"><!-- ClearFix --></div>
+    </div>
+    <!-- .fl-container -->
+    <div class="right-sidebar-block">
+    </div>
+    <!-- .right-sidebar -->
+    <div class="clear"><!-- ClearFix --></div>
+    </div>
     </div>
     <!-- F O O T E R -->
 {% endblock %}

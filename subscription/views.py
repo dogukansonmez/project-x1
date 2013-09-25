@@ -74,8 +74,10 @@ def share(request):
 
 
 def getExperienceImages(img_links):
-    return img_links.split(',')
-
+    if not img_links:
+        return []
+    else:
+        return img_links.split(',')
 
 def experiencePage(request, id):
     experience = Experience.objects.get(pk=id)

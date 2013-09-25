@@ -30,7 +30,6 @@
 
                 <hr class="masonry_blog_seperator">
                 <div class="post_bottom">
-                    <div class="comments">{{ blogItem.numberOfComments }} comments <span>|</span><a href="#">View all</a></div>
                     <div class="share">
                         <span>Share on</span><a href="#" class="share_twitter share_icon"></a><a href="#" class="share_pinterest share_icon"></a><a href="#" class="share_facebook share_icon"></a>
                     </div>
@@ -52,11 +51,10 @@
                 <div class="blogpost_title"><span class="blog_posttype blog_text"></span><a href="experience/{{ blogItem.id }}" class="mainTitlePermalink">
                     <h3>{{ blogItem.title }}</h3></a></div>
                 <article class="contentarea">
-                    <p>{{ blogItem.text }}<a href="#">Read more...</a></p>
+                    <p>{{ blogItem.text }}<a href="experience/{{ blogItem.id }}">  Read more ...</a></p>
                 </article>
                 <hr class="masonry_blog_seperator">
                 <div class="post_bottom">
-                    <div class="comments">{{ blogItem.numberOfComments }} comments <span>|</span></div>
                     <div class="share">
                         <span>Share on</span><a href="#" class="share_twitter share_icon"></a><a href="#" class="share_pinterest share_icon"></a><a href="#" class="share_facebook share_icon"></a>
                     </div>
@@ -65,35 +63,6 @@
             </div>
         </div><!-- .blog_item -->
 
-    {% endifequal %}
-
-    {% ifequal blogItem.type "typeC" %}
-
-        <div class="blog_item">
-            <div class="preview_wrapper">
-                <div class="featured_image_full">
-                    <iframe width="100%" height="190" frameborder="0" class="video_frame" allowfullscreen=""
-                            src="{{ blogItem.video }}"></iframe>
-                </div>
-                <div class="blog_info">
-                    {{ blogItem.postDate }}
-                </div>
-                <hr class="masonry_blog_seperator">
-                <div class="blogpost_title"><span class="blog_posttype blog_video"></span><a href="experience/{{ blogItem.id }}" class="mainTitlePermalink">
-                    <h3>{{ blogItem.title }}</h3></a></div>
-                <article class="contentarea">
-                    <p>{{ blogItem.text }} <a href="#">Read more...</a></p>
-                </article>
-                <hr class="masonry_blog_seperator">
-                <div class="post_bottom">
-                    <div class="comments">{{ blogItem.numberOfComments }}  comments <span>|</span> </div>
-                    <div class="share">
-                        <span>Share on</span><a href="#" class="share_twitter share_icon"></a><a href="#" class="share_pinterest share_icon"></a><a href="#" class="share_facebook share_icon"></a>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
-        </div><!-- .blog_item -->
     {% endifequal %}
 
 {% endfor %}

@@ -19,7 +19,6 @@ class Experience(models.Model):
     description = models.TextField()
     postDate = models.DateTimeField(auto_now=True)
     tags = models.TextField()
-    commentCount = models.IntegerField()
 
     def __unicode__(self):
         return self.name

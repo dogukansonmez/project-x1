@@ -12,7 +12,6 @@ class ExpItem:
         #self.tags = experience.tags
         date = experience.postDate
         self.postDate = "Post Date: " + str(date.day) + ' of ' + date.strftime("%B") + '  ' + str(date.year)
-        self.numberOfComments = experience.commentCount
         if not not experience.img_links:
             #TODO Validate Image
             self.image = experience.img_links.split(',')[0]
