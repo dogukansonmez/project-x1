@@ -9,15 +9,46 @@ from subscription.models import Experience
 
 APP_ROOT = os.path.dirname(globals()['__file__'])
 
-def home(request):
-    allExperiences = Experience.objects.all()
-    blogItems = convertToBlogItems(allExperiences)
-    return render_to_response('home.html', {'blogItems': blogItems}, context_instance=RequestContext(request))
 
+def home(request):
+    if isValidateUser(request):
+        allExperiences = Experience.objects.all()
+        blogItems = convertToBlogItems(allExperiences)
+        return render_to_response('home.html', {'blogItems': blogItems}, context_instance=RequestContext(request))
+    else:
+        return render_to_response('index.html', context_instance=RequestContext(request))
+
+def convertToBlogItems(allExperiences):
+    blogItems = []
+    for experience in allExperiences:
+        expItem = ExpItem(experience)
+        blogItems.append(expItem)
+    return blogItems
 
 def about(request):
     return render_to_response('about.html', context_instance=RequestContext(request))
 
+def getExperienceImages(img_links):
+    if not img_links:
+        return []
+    else:
+        return img_links.split(',')
+
+def experiencePage(request, id):
+    experience = Experience.objects.get(pk=id)
+    #TODO check out if experience is null or not
+    imagesOfExperience = getExperienceImages(experience.img_links)
+    return render_to_response('experience.html', {'experience': experience,'images':imagesOfExperience},
+        context_instance=RequestContext(request))
+
+
+def logout_user(request):
+    logout(request)
+    response = redirect('subscription.views.home')
+    response.delete_cookie('facebook')
+    return response
+
+########## Share experience
 def generateFileName(extension,i):
     return str(int(time.time())) + str(i) + "." + extension
 
@@ -57,7 +88,11 @@ def save_image_files(request):
 
 
 def isValidateUser(request):
-    return True
+    current_user = get_user(request)
+    if (not (current_user is None)) and current_user.is_authenticated():
+        return True
+    else:
+        return False
 
 
 def share(request):
@@ -72,30 +107,3 @@ def share(request):
     else:
         return render_to_response('share.html', context_instance=RequestContext(request))
 
-
-def getExperienceImages(img_links):
-    if not img_links:
-        return []
-    else:
-        return img_links.split(',')
-
-def experiencePage(request, id):
-    experience = Experience.objects.get(pk=id)
-    #TODO check out if experience is null or not
-    imagesOfExperience = getExperienceImages(experience.img_links)
-    return render_to_response('experience.html', {'experience': experience,'images':imagesOfExperience},
-        context_instance=RequestContext(request))
-
-
-def convertToBlogItems(allExperiences):
-    blogItems = []
-    for experience in allExperiences:
-        expItem = ExpItem(experience)
-        blogItems.append(expItem)
-    return blogItems
-
-def logout_user(request):
-    logout(request)
-    response = redirect('subscription.views.home')
-    response.delete_cookie('facebook')
-    return response

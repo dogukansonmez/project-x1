@@ -7,7 +7,6 @@
 
             <div class="fl-container">
                 <div class="posts-block">
-
                     <div class="row">
                         <div class="span_full">
                             <div class="blog_post_preview">
@@ -27,31 +26,41 @@
                                     </div>
                                 {% endif %}
                                 <!-- .camera_slider -->
-                            </div>
-                            <div class="module_content blockquote testimonials_list carouselslider" data-count="1">
-                                <ul>
-                                    <li>
-                                        <div class="item">
-                                            <div class="testimonials_photo">
-                                                <img src="https://graph.facebook.com/{{ experience.owner.userID }}/picture">
-                                            </div>
-                                            <div class="testimonials_text">
-                                                <P>{{ experience.description }}</P>
-                                                <span class="author">{{ experience.owner.firstName }}&nbsp;{{ experience.owner.lastName }}</span>
-                                                <span class="author_position">&nbsp;&nbsp;&nbsp;{{ experience.postDate }}</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                                <div class="blog_info">
+                                    <span class="comment"><img
+                                            src="https://graph.facebook.com/{{ experience.owner.userID }}/picture"></span>
+                                    <span class="author_name"><strong>Posted
+                                        by:</strong> {{ experience.owner.firstName }}&nbsp;{{ experience.owner.lastName }}</span>
+                                    <span class="comments"><strong>Ranked as:</strong> {{ experience.vote }}</span>
+                                </div>
+                                <!-- .blog_info -->
+                                <div class="blog_post_text">
+                                    <div class="blogpost_title">
+                                        <a href="blogpost_full.html" class="mainTitlePermalink">
+                                            <h3>{{ experience.title }}</h3></a>
+                                    </div>
+                                    <!-- .blogpost_title -->
+                                    <article class="contentarea">
+                                        {{ experience.description }}
+                                    </article>
+                                    <br>
+                                    <span class="comments"><strong>Where:</strong> {{ experience.where }}.&nbsp;</span>
+                                    <span class="category"><strong>When: </strong>{{ experience.when }}.&nbsp; </span>
+                                    <span class="blog_tags"><strong>Withom:</strong>{{ experience.withom }}</span>
+                                </div>
+                                <!-- .blog_post_text -->
+                                <div class="clear"></div>
                             </div>
                         </div>
-                        </div>
-                        <!-- .blog_post_preview -->
+                    </div>
+                    <!-- .blog_post_preview -->
                     <div class="clear"><!-- ClearFix --></div>
                     <!-- .commentlist -->
                     <legend></legend>
                     <h5 class="postcomment">leave a comment!</h5>
+
                     <p></p>
+
                     <div class="fb-comments" data-href="http://experience.com:8080/experience/{{ experience.id }}"
                          data-width="970"></div>
 

@@ -1,7 +1,7 @@
 {% extends "main.html" %}
 {% block content %}
 <!-- C O N T E N T -->
-<div class="content_wrapper">
+<div class="content_wrapper" xmlns="http://www.w3.org/1999/html">
 <div class="masonry_blog_block">
 <div class="masonry_blog">
 
@@ -30,8 +30,9 @@
 
                 <hr class="masonry_blog_seperator">
                 <div class="post_bottom">
+                    <div class="comments">Ranked as<a href="experience/{{ blogItem.id }}"> <strong>{{ blogItem.vote }}</strong></a></div>
                     <div class="share">
-                        <span>Share on</span><a href="#" class="share_twitter share_icon"></a><a href="#" class="share_pinterest share_icon"></a><a href="#" class="share_facebook share_icon"></a>
+                        <span>Share on</span><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fparse.com" class="share_facebook share_icon"></a>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -55,8 +56,9 @@
                 </article>
                 <hr class="masonry_blog_seperator">
                 <div class="post_bottom">
+                    <div class="comments">Ranked as<a href="experience/{{ blogItem.id }}"> <strong>{{ blogItem.vote }}</strong></a></div>
                     <div class="share">
-                        <span>Share on</span><a href="#" class="share_twitter share_icon"></a><a href="#" class="share_pinterest share_icon"></a><a href="#" class="share_facebook share_icon"></a>
+                        <span>Share on</span><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fparse.com" class="share_facebook share_icon"></a>
                     </div>
                     <div class="clear"></div>
                 </div>

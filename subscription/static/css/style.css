@@ -2364,7 +2364,7 @@ blockquote.left {
 		padding:0 7px;
 		border:1px solid;
 		text-decoration:none;
-		float:left;
+		float:none;
 	}	
 	.shortcode_button .ico { 
 		color:#dadada;
@@ -2409,7 +2409,10 @@ blockquote.left {
 	.shortcode_button.btn_type4:hover,
 	.shortcode_button.btn_type5:hover,
 	.shortcode_button.btn_type6:hover,
-	.shortcode_button.btn_type7:hover,
+	.shortcode_button.btn_type7{
+       text-align: center;
+       background-position:center;
+    }
 	.shortcode_button.btn_type8:hover,
 	.shortcode_button.btn_type9:hover,
 	.shortcode_button.btn_type10:hover,

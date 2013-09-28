@@ -5,11 +5,6 @@
         <div class="content_block">
             <h1><span>Once Upon a time</span></h1>
 
-            {% if user.is_anonymous %}
-                <a href="{% url "socialauth_begin" 'facebook' %}">login with facebook</a>
-            {% else %}
-                <p>This is story of {{ user.first_name }} {{ user.last_name }}</p> <a href="/logout/}">logout</a>
-            {% endif %}
             <div class="contentarea">
                 <div class="row">
                     <form class="form-horizontal" action="/share" method="POST" enctype="multipart/form-data">{% csrf_token %}
