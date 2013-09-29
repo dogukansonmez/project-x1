@@ -86,14 +86,12 @@ def save_image_files(request):
                     destination.write(chunk)
     return images
 
-
 def isValidateUser(request):
-    return True
-#    current_user = get_user(request)
-#    if (not (current_user is None)) and current_user.is_authenticated():
-#        return True
-#    else:
-#        return False
+    current_user = get_user(request)
+    if (not (current_user is None)) and current_user.is_authenticated():
+        return True
+    else:
+        return False
 
 
 def share(request):
