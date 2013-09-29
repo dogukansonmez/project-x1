@@ -11,7 +11,7 @@ class SharedExp:
        self.title = httpRequest.get('title','')
        self.where = httpRequest.get('where','')
        self.when = httpRequest.get('when','')
-       self.whitWhom = httpRequest.get('whitWhom','')
+       self.whitWhom = httpRequest.get('withwhom','')
        self.vote = httpRequest.get('radios','')
        self.description = httpRequest.get('description','')
 
@@ -26,7 +26,6 @@ class SharedExp:
         experience.withWhom = self.whitWhom
         experience.description = self.description
         experience.vote = self.vote
-        experience.commentCount=0
         if len(images) > 0:
             experience.img_links = ','.join(images)
             experience.type='typeA'

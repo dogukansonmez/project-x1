@@ -88,11 +88,12 @@ def save_image_files(request):
 
 
 def isValidateUser(request):
-    current_user = get_user(request)
-    if (not (current_user is None)) and current_user.is_authenticated():
-        return True
-    else:
-        return False
+    return True
+#    current_user = get_user(request)
+#    if (not (current_user is None)) and current_user.is_authenticated():
+#        return True
+#    else:
+#        return False
 
 
 def share(request):
