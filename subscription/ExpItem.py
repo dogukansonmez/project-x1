@@ -13,8 +13,14 @@ class ExpItem:
         date = experience.postDate
         self.postDate = "Post Date: " + str(date.day) + ' of ' + date.strftime("%B") + '  ' + str(date.year)
         if not not experience.img_links:
-            #TODO Validate Image
-            self.image = experience.img_links.split(',')[0]
+            images = experience.img_links.split(',')
+            self.activeImage = []
+            self.itemImages = []
+            if len(images) == 1:
+                self.activeImage = images[0]
+            elif len(images) > 1:
+                self.activeImage = images[0]
+                self.itemImages = images[1:]
         self.text = experience.description[:100]
         self.vote = experience.vote
 
