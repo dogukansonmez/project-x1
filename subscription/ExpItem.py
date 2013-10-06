@@ -10,18 +10,15 @@ class ExpItem:
         self.type = experience.type
         self.title = experience.title
         #self.tags = experience.tags
-        date = experience.postDate
-        self.postDate = "Post Date: " + str(date.day) + ' of ' + date.strftime("%B") + '  ' + str(date.year)
+        date = experience.when
+        self.postDate = str(date.day) + ' of ' + date.strftime("%B") + '  ' + str(date.year)
+        images = experience.img_links.split(',')
         if not not experience.img_links:
-            images = experience.img_links.split(',')
-            self.activeImage = []
-            self.itemImages = []
-            if len(images) == 1:
-                self.activeImage = images[0]
-            elif len(images) > 1:
-                self.activeImage = images[0]
-                self.itemImages = images[1:]
+            #TODO Validate Image
+            self.image = images[0]
+        self.image_count = len(images)
         self.text = experience.description[:100]
         self.vote = experience.vote
+        self.posted_by = experience.owner.firstName + " " + experience.owner.lastName
 
 

@@ -11,7 +11,7 @@ class Experience(models.Model):
     type = models.TextField()
     title = models.TextField()
     where = models.TextField()
-    when = models.TextField()
+    when = models.DateTimeField()
     withWhom= models.TextField()
     vote = models.IntegerField()
     img_links = models.TextField()

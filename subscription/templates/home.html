@@ -1,137 +1,102 @@
 {% extends "main.html" %}
 {% block content %}
-    <!-- C O N T E N T -->
-    <div class="content_wrapper" xmlns="http://www.w3.org/1999/html">
-        <div class="masonry_blog_block">
-            <div class="masonry_blog">
+<!-- C O N T E N T -->
+<div class="content_wrapper" xmlns="http://www.w3.org/1999/html">
+<div class="masonry_blog_block">
+<div class="masonry_blog">
 
-                {% for blogItem in blogItems %}
+{% for blogItem in blogItems %}
 
-                    {% ifequal blogItem.type "typeA" %}
+    {% ifequal blogItem.type "typeA" %}
 
-                        <div class="blog_item">
-                            <div class="preview_wrapper">
-                                <div id="carousel-{{ blogItem.id }}" class="carousel slide"><!-- class of slide for animation -->
-                                    <div class="carousel-inner">
-                                        <div class="item active"><!-- class of active since it's the first item -->
-                                            <div class="featured_image_full">
-                                                <img src="{{ STATIC_URL }}{{ blogItem.activeImage }}">
+        <div class="blog_item">
+            <div class="preview_wrapper">
+                <div class="featured_image_full">
+                    <img src="{{STATIC_URL}}{{ blogItem.image }}" alt="">
+                    <div class="featured_image_wrapper"></div>
+                    <a href="{{STATIC_URL}}{{ blogItem.image }}" class="ico_zoom prettyPhoto"><span></span></a>
+                </div>
+                <div class="blog_info">
+                   {{ blogItem.posted_by }} on {{ blogItem.postDate }}
+                </div>
+                <hr class="masonry_blog_seperator">
 
-                                                <div class="featured_image_wrapper"></div>
-                                                <a href="{{ STATIC_URL }}{{ blogItem.activeImage }}"
-                                                   class="ico_zoom prettyPhoto"><span></span></a>
-                                            </div>
-                                        </div>
-                                        {% for itemImage in  blogItem.itemImages %}
-                                            <div class="item">
-                                                <div class="featured_image_full">
-                                                    <img src="{{ STATIC_URL }}{{ itemImage }}" alt="">
+                <div class="blogpost_title"><span class="blog_posttype blog_image"></span><a href="experience/{{ blogItem.id }}" class="mainTitlePermalink">
+                    <h3>{{ blogItem.title }}</h3></a></div>
 
-                                                    <div class="featured_image_wrapper"></div>
-                                                    <a href="{{ STATIC_URL }}{{ itemImage }}"
-                                                       class="ico_zoom prettyPhoto"><span></span></a>
-                                                </div>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                    <!-- /.carousel-inner -->
-                                    <!--  Next and Previous controls below
-                                          href values must reference the id for this carousel -->
-                                    {% if blogItem.itemImages|length > 0 %}
-                                        <a class="carousel-control left" href="#carousel-{{ blogItem.id }}"
-                                           data-slide="prev">&lsaquo;</a>
-                                        <a class="carousel-control right" href="#carousel-{{ blogItem.id }}"
-                                           data-slide="next">&rsaquo;</a>
-                                    {% endif %}
-                                </div>
-                                <!-- /.carousel -->
+                <article class="contentarea">
+                    <a href="experience/{{ blogItem.id }}"> <p>{{ blogItem.text }} ...</p></a>
+                </article>
 
+                <hr class="masonry_blog_seperator">
+                <div class="post_bottom">
+                    {% if blogItem.image_count > 1 %}
+                        <div class="comments"><a href="experience/{{ blogItem.id }}"> <strong>{{ blogItem.image_count }} More images</strong></a>   Ranked as<a href="experience/{{ blogItem.id }}"> <strong>{{ blogItem.vote }}</strong></a></div>
+                    {% else %}
+                        <div class="comments"><a href="experience/{{ blogItem.id }}"> <strong>1 image</strong></a>   Ranked as<a href="experience/{{ blogItem.id }}"> <strong>{{ blogItem.vote }}</strong></a></div>
+                    {% endif %}
 
-                                <div class="blog_info">
-                                    {{ blogItem.postDate }}
-                                </div>
-                                <hr class="masonry_blog_seperator">
-
-                                <div class="blogpost_title"><span class="blog_posttype blog_image"></span><a
-                                        href="experience/{{ blogItem.id }}" class="mainTitlePermalink">
-                                    <h3>{{ blogItem.title }}</h3></a></div>
-
-                                <article class="contentarea">
-                                    <p>{{ blogItem.text }}<a href="experience/{{ blogItem.id }}"> Read more ...</a></p>
-                                </article>
-
-                                <hr class="masonry_blog_seperator">
-                                <div class="post_bottom">
-                                    <div class="comments">Ranked as<a href="experience/{{ blogItem.id }}">
-                                        <strong>{{ blogItem.vote }}</strong></a></div>
-                                    <div class="share">
-                                        <span>Share on</span><a
-                                            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fparse.com"
-                                            class="share_facebook share_icon"></a>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                        </div><!-- .blog_item -->
-
-                    {% endifequal %}
-
-                    {% ifequal blogItem.type "typeB" %}
-
-                        <div class="blog_item">
-                            <div class="preview_wrapper">
-                                <div class="blog_info">
-                                    {{ blogItem.postDate }}
-                                </div>
-                                <hr class="masonry_blog_seperator">
-                                <div class="blogpost_title"><span class="blog_posttype blog_text"></span><a
-                                        href="experience/{{ blogItem.id }}" class="mainTitlePermalink">
-                                    <h3>{{ blogItem.title }}</h3></a></div>
-                                <article class="contentarea">
-                                    <p>{{ blogItem.text }}<a href="experience/{{ blogItem.id }}"> Read more ...</a></p>
-                                </article>
-                                <hr class="masonry_blog_seperator">
-                                <div class="post_bottom">
-                                    <div class="comments">Ranked as<a href="experience/{{ blogItem.id }}">
-                                        <strong>{{ blogItem.vote }}</strong></a></div>
-                                    <div class="share">
-                                        <span>Share on</span><a
-                                            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fparse.com"
-                                            class="share_facebook share_icon"></a>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                        </div><!-- .blog_item -->
-
-                    {% endifequal %}
-
-                {% endfor %}
-
-                <div class="clear"><!-- ClearFix --></div>
+                    <div class="share">
+                        <span>Share on</span><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fparse.com" class="share_facebook share_icon"></a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
             </div>
-        </div>
-        <!-- .masonry_blog_block -->
-        <script type="text/javascript">
-            $(window).load(function () {
-                setTimeout("masonry_blog()", 500);
-            });
-            $(window).resize(function () {
-                masonry_blog();
-            });
-            function masonry_blog() {
-                blog_itemInRow = 5;
-                if ($(window).width() > 0) blog_itemInRow = 1;
-                if ($(window).width() > 600) blog_itemInRow = 2;
-                if ($(window).width() > 875) blog_itemInRow = 3;
-                if ($(window).width() > 1200) blog_itemInRow = 4;
-                if ($(window).width() > 1440) blog_itemInRow = 5;
-                column_size = Math.floor((($(window).width() - 5) / blog_itemInRow));
-                $('.masonry_blog').find('.blog_item').width(column_size);
-                $('.masonry_blog').find('.jp-progress').width(column_size - 180);
-                setTimeout("$('.masonry_blog').masonry({itemSelector: '.blog_item', columnWidth: column_size})", 500);
-            }
-        </script>
-    </div>
-    <!-- F O O T E R -->
+        </div><!-- .blog_item -->
+
+    {% endifequal %}
+
+    {% ifequal blogItem.type "typeB" %}
+
+        <div class="blog_item">
+            <div class="preview_wrapper">
+                <div class="blog_info">
+                    Posted by {{ blogItem.posted_by }} on {{ blogItem.postDate }}
+                </div>
+                <hr class="masonry_blog_seperator">
+                <div class="blogpost_title"><span class="blog_posttype blog_text"></span><a href="experience/{{ blogItem.id }}" class="mainTitlePermalink">
+                    <h3>{{ blogItem.title }}</h3></a></div>
+                <article class="contentarea">
+                    <a href="experience/{{ blogItem.id }}"> <p>{{ blogItem.text }} ...</p></a>
+                </article>
+                <hr class="masonry_blog_seperator">
+                <div class="post_bottom">
+                    <div class="comments">Ranked as<a href="experience/{{ blogItem.id }}"> <strong>{{ blogItem.vote }}</strong></a></div>
+                    <div class="share">
+                        <span>Share on</span><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fparse.com" class="share_facebook share_icon"></a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div><!-- .blog_item -->
+
+    {% endifequal %}
+
+{% endfor %}
+
+    <div class="clear"><!-- ClearFix --></div>
+</div>
+</div><!-- .masonry_blog_block -->
+<script type="text/javascript">
+    $(window).load(function(){
+        setTimeout("masonry_blog()",500);
+    });
+    $(window).resize(function(){
+        masonry_blog();
+    });
+    function masonry_blog() {
+        blog_itemInRow = 5;
+        if ($(window).width() > 0) blog_itemInRow = 1;
+        if ($(window).width() > 600) blog_itemInRow = 2;
+        if ($(window).width() > 875) blog_itemInRow = 3;
+        if ($(window).width() > 1200) blog_itemInRow = 4;
+        if ($(window).width() > 1440) blog_itemInRow = 5;
+        column_size = Math.floor((($(window).width()-5)/blog_itemInRow));
+        $('.masonry_blog').find('.blog_item').width(column_size);
+        $('.masonry_blog').find('.jp-progress').width(column_size-180);
+        setTimeout("$('.masonry_blog').masonry({itemSelector: '.blog_item', columnWidth: column_size})",500);
+    }
+</script>
+</div>
+<!-- F O O T E R -->
 {% endblock %}

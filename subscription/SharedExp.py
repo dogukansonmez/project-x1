@@ -1,7 +1,6 @@
-import calendar
-import datetime
 from django.contrib.auth import get_user
 from subscription.models import Experience, User
+from datetime import datetime
 
 __author__ = 'dogukansonmez'
 
@@ -22,7 +21,7 @@ class SharedExp:
         experience.name = self.title
         experience.title = self.title
         experience.where = self.where
-        experience.when = str(self.when)
+        experience.when =  datetime.strptime(str(self.when) , '%m/%d/%Y')
         experience.withWhom = self.whitWhom
         experience.description = self.description
         experience.vote = self.vote
