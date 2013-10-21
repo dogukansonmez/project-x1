@@ -56,12 +56,11 @@ def logout_user(request):
 
 
 def isValidateUser(request):
-    return True
-#    current_user = get_user(request)
-#    if (not (current_user is None)) and current_user.is_authenticated():
-#        return True
-#    else:
-#        return False
+    current_user = get_user(request)
+    if (not (current_user is None)) and current_user.is_authenticated():
+        return True
+    else:
+        return False
 
 def share(request):
     if request.method == 'POST':

@@ -16,7 +16,7 @@
                                 <!-- class of slide for animation -->
                                 <div class="carousel-inner">
                                     <div class="item active"><!-- class of active since it's the first item -->
-                                        <img src="{{ STATIC_URL }}{{ activeImage }}" style="text-align: center">
+                                        <img src="{{ STATIC_URL }}{{ activeImage }}">
                                     </div>
                                     {% for image in itemImages %}
                                     <div class="item">
@@ -39,12 +39,6 @@
                                     <span class="author_name"><strong>Posted
                                         by:</strong> {{ experience.owner.firstName }}&nbsp;{{ experience.owner.lastName }}</span>
                                 <span class="comments"><strong>Ranked as:</strong> {{ experience.vote }}</span>
-
-                                <div class="fb-like" data-href="http://experience.com:8080/experience/{{experience.id}}"
-                                     data-width="The pixel width of the plugin"
-                                     data-height="The pixel height of the plugin" data-colorscheme="light"
-                                     data-layout="standard" data-action="like" data-show-faces="true"
-                                     data-send="false"></div>
                             </div>
                             <!-- .blog_info -->
                             <div class="blog_post_text">
@@ -68,6 +62,11 @@
                 </div>
                 <!-- .blog_post_preview -->
                 <div class="clear"><!-- ClearFix --></div>
+                <div class="fb-like" data-href="http://experience.com:8080/experience/{{experience.id}}"
+                     data-width="The pixel width of the plugin"
+                     data-height="The pixel height of the plugin" data-colorscheme="light"
+                     data-layout="standard" data-action="like" data-show-faces="true"
+                     data-send="false"></div>
                 <!-- .commentlist -->
                 <legend></legend>
                 <h5 class="postcomment">leave a comment!</h5>
