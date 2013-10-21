@@ -6,8 +6,6 @@ from django.contrib.auth import get_user
 import time
 
 APP_ROOT = os.path.dirname(globals()['__file__'])
-max_with=1200
-max_height =800
 
 def generateFileName(extension,i):
     return str(int(time.time())) + str(i) + "." + "jpg"
@@ -41,16 +39,19 @@ def save_image_files(request):
             # Open the image file.
             img = Image.open(file)
             # Resize it.
-            width = img.size[0]
-            height = img.size[1]
+            w = img.size[0]
+            h = img.size[1]
+            w_box = 750
+            h_box = 650
+            f1 = 1.0*w_box/w # 1.0 forces float division in Python2
+            f2 = 1.0*h_box/h
+            factor = min([f1, f2])
+            #print(f1, f2, factor) # test
+            # use best down-sizing filter
+            width = int(w*factor)
+            height = int(h*factor)
+            img = img.resize((width, height), Image.ANTIALIAS)
 
-            if width > max_with:
-                width = max_with
-
-            if height > max_height:
-                height = max_height
-
-            img = img.resize((width,height), Image.ANTIALIAS)
             # Save it back to disk.
             img.save(os.path.join(imgFolder, name))
 
