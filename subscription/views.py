@@ -31,12 +31,11 @@ def getExperienceImages(img_links):
         return img_links.split(',')
 
 def experiencePage(request, id):
-    global activeImage
     experience = Experience.objects.get(pk=id)
     #TODO check out if experience is null or not
     imagesOfExperience = getExperienceImages(experience.img_links)
     itemImages = []
-
+    activeImage = ""
     if len(imagesOfExperience) > 0:
         activeImage = imagesOfExperience[0]
 
