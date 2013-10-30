@@ -1,10 +1,12 @@
 from django.contrib.auth import logout, get_user
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from subscription.ExpItem import ExpItem
 from subscription.SharedExp import SharedExp
 from subscription.imageManager import save_image_files
-from subscription.models import Experience
+from subscription.models import Experience, User
+
 
 def home(request):
     if isValidateUser(request):
@@ -14,6 +16,7 @@ def home(request):
     else:
         return render_to_response('index.html', context_instance=RequestContext(request))
 
+
 def convertToBlogItems(allExperiences):
     blogItems = []
     for experience in allExperiences:
@@ -21,14 +24,17 @@ def convertToBlogItems(allExperiences):
         blogItems.append(expItem)
     return blogItems
 
+
 def about(request):
     return render_to_response('about.html', context_instance=RequestContext(request))
+
 
 def getExperienceImages(img_links):
     if not img_links:
         return []
     else:
         return img_links.split(',')
+
 
 def experiencePage(request, id):
     experience = Experience.objects.get(pk=id)
@@ -47,6 +53,7 @@ def experiencePage(request, id):
                                'itemImages': itemImages},
                               context_instance=RequestContext(request))
 
+
 def logout_user(request):
     logout(request)
     response = redirect('subscription.views.home')
@@ -61,6 +68,7 @@ def isValidateUser(request):
     else:
         return False
 
+
 def share(request):
     if request.method == 'POST':
         if isValidateUser(request):
@@ -72,4 +80,31 @@ def share(request):
             return render_to_response('share.html', context_instance=RequestContext(request))
     else:
         return render_to_response('share.html', context_instance=RequestContext(request))
+
+
+def my_experiences(request):
+    if isValidateUser(request):
+        myExperiences = []
+        blogItems = []
+        try:
+            current_user = get_user(request)
+            user = User.objects.get(userID=current_user)
+            myExperiences = Experience.objects.filter(owner=user)
+            blogItems = convertToBlogItems(myExperiences)
+        except ObjectDoesNotExist:
+            print "Seems you don't have any experiences"
+        return render_to_response('myexperiences.html', {'blogItems': blogItems},
+                                  context_instance=RequestContext(request))
+    else:
+        return render_to_response('index.html', context_instance=RequestContext(request))
+
+
+def removeExperience(request, id):
+    if isValidateUser(request):
+        Experience.objects.filter(id=id).delete()
+        response = redirect('subscription.views.my_experiences')
+        return response
+    else:
+        return render_to_response('index.html', context_instance=RequestContext(request))
+
 
