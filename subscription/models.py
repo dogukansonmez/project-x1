@@ -1,9 +1,16 @@
 from django.db import models
 
+class Community(models.Model):
+    name = models.TextField()
+    description = models.TextField()
+    type = models.TextField()
+    moderators = models.ManyToManyField("User")
+
 class User(models.Model):
     userID = models.TextField()
     firstName = models.TextField()
     lastName = models.TextField()
+    communities = models.ManyToManyField(Community)
 
 class Experience(models.Model):
     name = models.TextField()
