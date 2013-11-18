@@ -18,7 +18,7 @@ class ExpItem:
             self.image = images[0]
         self.image_count = len(images)
         self.text = experience.description[:100]
-        self.vote = experience.vote
+        #self.vote = experience.vote
         self.posted_by = experience.owner.firstName + " " + experience.owner.lastName
 
 

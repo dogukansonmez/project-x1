@@ -20,7 +20,7 @@ class Experience(models.Model):
     where = models.TextField()
     when = models.DateTimeField()
     withWhom= models.TextField()
-    vote = models.IntegerField()
+    vote = models.IntegerField(null=True, blank=True)
     img_links = models.TextField()
     video_links = models.TextField()
     description = models.TextField()

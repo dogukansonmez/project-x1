@@ -11,7 +11,7 @@ class SharedExp:
        self.where = httpRequest.get('where','')
        self.when = httpRequest.get('when','')
        self.whitWhom = httpRequest.get('withwhom','')
-       self.vote = httpRequest.get('radios','')
+       #self.vote = httpRequest.get('radios','')
        self.description = httpRequest.get('description','')
 
 
@@ -24,7 +24,7 @@ class SharedExp:
         experience.when =  datetime.strptime(str(self.when) , '%m/%d/%Y')
         experience.withWhom = self.whitWhom
         experience.description = self.description
-        experience.vote = self.vote
+        #experience.vote = self.vote
         if len(images) > 0:
             experience.img_links = ','.join(images)
             experience.type='typeA'

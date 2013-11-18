@@ -32,13 +32,15 @@
                 <hr class="masonry_blog_seperator">
                 <div class="post_bottom">
                     {% if blogItem.image_count > 1 %}
-                        <div class="comments"><a href="experience/{{ blogItem.id }}"> <strong>{{ blogItem.image_count }} More images</strong></a>   Ranked as<a href="experience/{{ blogItem.id }}"> <strong>{{ blogItem.vote }}</strong></a></div>
+                    <div class="comments"><a href="experience/{{ blogItem.id }}"> <strong>{{ blogItem.image_count }} More images</strong></a></div>
                     {% else %}
-                        <div class="comments"><a href="experience/{{ blogItem.id }}"> <strong>1 image</strong></a>   Ranked as<a href="experience/{{ blogItem.id }}"> <strong>{{ blogItem.vote }}</strong></a></div>
+                    <div class="comments"><a href="experience/{{ blogItem.id }}"> <strong>1 image</strong></a></div>
                     {% endif %}
 
+
                     <div class="share">
-                        <span>Share on</span><a href="https://www.facebook.com/sharer/sharer.php?u=http://experience.com:8080/experience/{{ blogItem.id }}" class="share_facebook share_icon"></a>
+                        <div class="fb-like" data-href="http://experience.com:8080/experience/{{ blogItem.id }}"
+                             data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -62,9 +64,10 @@
                 </article>
                 <hr class="masonry_blog_seperator">
                 <div class="post_bottom">
-                    <div class="comments">Ranked as<a href="experience/{{ blogItem.id }}"> <strong>{{ blogItem.vote }}</strong></a></div>
+
                     <div class="share">
-                        <span>Share on</span><a href="https://www.facebook.com/sharer/sharer.php?u=http://experience.com:8080/experience/{{ blogItem.id }}" class="share_facebook share_icon"></a>
+                        <div class="fb-like" data-href="http://experience.com:8080/experience/{{ blogItem.id }}"
+                             data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
                     </div>
                     <div class="clear"></div>
                 </div>
