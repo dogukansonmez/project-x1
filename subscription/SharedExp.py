@@ -15,13 +15,20 @@ class SharedExp:
        self.description = httpRequest.get('description','')
 
 
+    def getDate(self,expDate):
+        try:
+            return datetime.strptime(expDate , '%m/%d/%Y')
+        except ValueError:
+            return datetime.strptime("01/01/2000" , '%m/%d/%Y')
+
+
     def getExperience(self,request,images):
 
         experience = Experience()
         experience.name = self.title
         experience.title = self.title
         experience.where = self.where
-        experience.when =  datetime.strptime(str(self.when) , '%m/%d/%Y')
+        experience.when =  self.getDate(str(self.when))
         experience.withWhom = self.whitWhom
         experience.description = self.description
         #experience.vote = self.vote
