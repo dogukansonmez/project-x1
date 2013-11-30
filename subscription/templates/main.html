@@ -101,30 +101,12 @@
 </script>
 
 <img src="{{STATIC_URL}}img/my_preloader1.gif" id="preloader">
-<!-- H E A D E R -->
-<header>
-    <div id="jp_container_1" class="jp-audio">
-    </div>
-    <nav>
-        <ul class="menu">
-            <li><a href="/">Experiences</a></li>
-            <li><a href="/share">Share</a></li>
-            <li><a href="/logout">Logout</a></li>
-        </ul>
-        <!-- .menu -->
-    </nav>
-    <div class="clear"></div>
-</header>
+<!-- C O N T E N T -->
+{% block menu %}{% endblock %}
 <!-- C O N T E N T -->
 {% block content %}{% endblock %}
 
-<!-- F O O T E R -->
-<footer>
-    <div class="call_us">
-        <div class="copy">&copy; 2013 Experience Of Us. All Rights Reserved</div>
-        &nbsp;&nbsp;&nbsp;<a href="/my_experiences">My experiences</a>&nbsp;&nbsp;&nbsp;<a href="/about">About experienceof.us</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{% block footer %}{% endblock %}
 
-    </div>
-</footer>
 </body>
 </html>

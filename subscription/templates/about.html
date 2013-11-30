@@ -1,4 +1,8 @@
 {% extends "main.html" %}
+{% block menu %}
+{% include "mainmenu.html" %}
+{% endblock %}
+
 {% block content %}
 <div class="content_wrapper">
     <div class="content_block">
@@ -37,4 +41,8 @@
         </div>
     </div><!-- .content_block -->
 </div>
+{% endblock %}
+
+{% block footer %}
+{% include "footer.html" %}
 {% endblock %}

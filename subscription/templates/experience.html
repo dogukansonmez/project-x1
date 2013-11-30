@@ -1,4 +1,8 @@
 {% extends "main.html" %}
+{% block menu %}
+    {% include "mainmenu.html" %}
+{% endblock %}
+
 {% block content %}
 <!-- C O N T E N T -->
 <div class="content_wrapper">
@@ -91,4 +95,8 @@
 <div class="clear"><!-- ClearFix --></div>
 
 <!-- F O O T E R -->
+{% endblock %}
+
+{% block footer %}
+    {% include "footer.html" %}
 {% endblock %}

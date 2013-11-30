@@ -1,4 +1,9 @@
 {% extends "main.html" %}
+
+{% block menu %}
+{% include "mainmenu.html" %}
+{% endblock %}
+
 {% block content %}
 <!-- C O N T E N T -->
 <div class="content_wrapper" xmlns="http://www.w3.org/1999/html">
@@ -102,4 +107,8 @@
 </script>
 </div>
 <!-- F O O T E R -->
+{% endblock %}
+
+{% block footer %}
+{% include "footer.html" %}
 {% endblock %}

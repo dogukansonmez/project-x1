@@ -26,7 +26,13 @@ def convertToBlogItems(allExperiences):
 
 ####################################################################################
 def about(request):
-    return render_to_response('about.html', context_instance=RequestContext(request))
+    if isValidateUser(request):
+        return render_to_response('about.html', context_instance=RequestContext(request))
+    else:
+        return render_to_response('aboutus.html', context_instance=RequestContext(request))
+
+def aboutus(request):
+    return render_to_response('aboutus.html', context_instance=RequestContext(request))
 
 
 def getExperienceImages(img_links):

@@ -5,6 +5,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'subscription.views.home', name='home'),
+    url(r'^aboutus$','subscription.views.aboutus', name='aboutus'),
     url(r'^about$','subscription.views.about', name='about'),
     url(r'^my_experiences','subscription.views.my_experiences', name='my_experiences'),
     url(r'^share','subscription.views.share', name='share'),
