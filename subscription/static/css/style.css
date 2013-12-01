@@ -1575,40 +1575,7 @@ hr.invisible {
 	color:#bebebe;
 }
 
-blockquote {
-	margin:0px;
-	padding:0 0 5px 0px;
-	border:none;
-}
-blockquote p { 
-	padding:0 20px 0 40px; 
-	font-size:11px; 
-	color:#bebebe; 
-	margin-bottom:7px;
-	background:url(../img/bg_blockquote.png) no-repeat 0 4px; 
-}
-blockquote.dark_type p { 
-	background:url(../img/bg_blockquote_dark.png) no-repeat 0 4px; 
-}
-blockquote span {
-	font-size:11px; 
-	display:block; 
-	padding:0px 12px 0 40px;
-	color:#ef2748;
-	font-weight:bold;
-}
-blockquote.right { 
-	margin:0px; 
-	width:50%; 
-	float:right;
-	padding-right:0!important;
-	margin-left:12px;
-}
-blockquote.left { 
-	margin:0px; 
-	width:50%; 
-	float:left; 
-}
+
 
 .demo_columns {
 	background:#3d3d3d;
