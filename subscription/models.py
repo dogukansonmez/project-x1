@@ -14,6 +14,7 @@ class User(models.Model):
 
 class Experience(models.Model):
     name = models.TextField()
+    category = models.TextField()
     owner = models.ForeignKey("User")
     type = models.TextField()
     title = models.TextField()
