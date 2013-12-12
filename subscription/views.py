@@ -121,4 +121,10 @@ def removeExperience(request, id):
     else:
         return render_to_response('index.html', context_instance=RequestContext(request))
 
+####################################################################################
+def page_not_found(request):
+        return render_to_response('404.html', context_instance=RequestContext(request))
 
+####################################################################################
+def server_error(request):
+        return render_to_response('500.html', context_instance=RequestContext(request))

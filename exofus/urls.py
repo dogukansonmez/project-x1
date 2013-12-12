@@ -3,6 +3,10 @@ from django.contrib import admin
 
 admin.autodiscover()
 
+handler404 = 'subscription.views.page_not_found'
+handler500 = 'subscription.views.server_error'
+handler400 = 'subscription.views.server_error'
+
 urlpatterns = patterns('',
     url(r'^$', 'subscription.views.home', name='home'),
     url(r'^aboutus$','subscription.views.aboutus', name='aboutus'),
