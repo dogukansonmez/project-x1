@@ -3,8 +3,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from subscription.ExpItem import ExpItem
+from subscription.ImageManager import save_image_files
 from subscription.SharedExp import SharedExp
-from subscription.imageManager import save_image_files
 from subscription.models import Experience, User
 
 ####################################################################################
