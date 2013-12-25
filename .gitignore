@@ -1,5 +1,7 @@
-testdb
-
-.idea/*
-*.iml
-*.pyc
+*.py[co]
+*.sw[po]
+*.bak
+*.orig
+*~
+.project
+.pydevproject
