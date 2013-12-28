@@ -1,10 +1,8 @@
-import datetime
-from django.db.models import DateTimeField
 
 __author__ = 'dogukansonmez'
 
-class ExpItem:
 
+class ExpItem:
     def __init__(self, experience):
         self.id = experience.id
         self.type = experience.type

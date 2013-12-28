@@ -9,7 +9,7 @@ from subscription.models import Experience, User
 
 ####################################################################################
 def home(request):
-    if isValidateUser(request):
+    if isValidUser(request):
         allExperiences = Experience.objects.all()
         blogItems = convertToBlogItems(allExperiences)
         return render_to_response('home.html', {'blogItems': blogItems}, context_instance=RequestContext(request))
@@ -26,7 +26,7 @@ def convertToBlogItems(allExperiences):
 
 ####################################################################################
 def about(request):
-    if isValidateUser(request):
+    if isValidUser(request):
         return render_to_response('about.html', context_instance=RequestContext(request))
     else:
         return render_to_response('aboutus.html', context_instance=RequestContext(request))
@@ -43,7 +43,7 @@ def getExperienceImages(img_links):
 
 ####################################################################################
 def experiencePage(request, id):
-    if isValidateUser(request):
+    if isValidUser(request):
         experience = Experience.objects.get(pk=id)
         #TODO check out if experience is null or not
         imagesOfExperience = getExperienceImages(experience.img_links)
@@ -70,26 +70,29 @@ def logout_user(request):
     return response
 
 
-def isValidateUser(request):
+def isValidUser(request):
     current_user = get_user(request)
     return (not (current_user is None)) and current_user.is_authenticated()
 
 
 def isRealUser(request):
     current_user = get_user(request)
-    return (not (current_user is None)) and (not (current_user.first_name is None))
+    if (not (current_user is None)) and (current_user.first_name.strip()):
+        return True
+    else:
+        return False
 
 ####################################################################################
 def share(request):
-    if isValidateUser(request):
+    if isValidUser(request):
         if request.method == 'POST':
-            if isValidateUser(request) and isRealUser(request):
+            if (isValidUser(request) and isRealUser(request)):
                 images = save_image_files(request)
                 experience = SharedExp(request.POST).getExperience(request, images)
                 experience.save()
                 return redirect('subscription.views.home')
             else:
-                return render_to_response('share.html', context_instance=RequestContext(request))
+                return render_to_response('index.html', context_instance=RequestContext(request))
         else:
             return render_to_response('share.html', context_instance=RequestContext(request))
     else:
@@ -98,7 +101,7 @@ def share(request):
 
 ####################################################################################
 def my_experiences(request):
-    if isValidateUser(request):
+    if isValidUser(request):
         blogItems = []
         try:
             current_user = get_user(request)
@@ -114,7 +117,7 @@ def my_experiences(request):
 
 ####################################################################################
 def removeExperience(request, id):
-    if isValidateUser(request):
+    if isValidUser(request):
         Experience.objects.filter(id=id).delete()
         response = redirect('subscription.views.my_experiences')
         return response
