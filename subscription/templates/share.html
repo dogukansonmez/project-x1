@@ -1,6 +1,6 @@
 {% extends "main.html" %}
 {% block menu %}
-{% include "mainmenu.html" %}
+    {% include "mainmenu.html" %}
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,8 @@
 
             <div class="contentarea">
                 <div class="row">
-                    <form class="form-horizontal" action="/share" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    <form class="form-horizontal" onsubmit="return checkBeforeSubmit()" action="/share" method="POST"
+                          enctype="multipart/form-data">{% csrf_token %}
                         <fieldset>
                             <!-- Form Name -->
                             <legend></legend>
@@ -42,8 +43,10 @@
                                     <!-- Text input-->
                                     <div class="control-group">
                                         <label class="control-label" for="when">When</label>
-                                        <div id="datex"  class="controls date">
-                                            <input id="when" name="when"  type="text" class="input-xlarge" readonly required><span class="add-on"></span>
+
+                                        <div id="datex" class="controls date">
+                                            <input id="when" name="when" type="text" class="input-xlarge" readonly
+                                                   required><span class="add-on"></span>
                                         </div>
                                         <script type="text/javascript">
                                             $('#datex').datepicker({
@@ -68,7 +71,8 @@
 
                                         <div class="controls">
                                             <textarea id="description" name="description"
-                                                      placeholder="You cannot believe it..." class="input-xxlarge" required></textarea>
+                                                      placeholder="You cannot believe it..." class="input-xxlarge"
+                                                      required></textarea>
                                         </div>
                                     </div>
 
@@ -87,7 +91,9 @@
                                                 <div>
                                                     <span class="btn btn-file"><span
                                                             class="fileupload-new">Select image</span><span
-                                                            class="fileupload-exists">Change</span><input type="file" id="file1" name="file1"/></span>
+                                                            class="fileupload-exists">Change</span><input type="file"
+                                                                                                          id="file1"
+                                                                                                          name="file1"/></span>
                                                     <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">X</a>
                                                 </div>
                                             </div>
@@ -103,7 +109,9 @@
                                                 <div>
                                                     <span class="btn btn-file"><span
                                                             class="fileupload-new">Select image</span><span
-                                                            class="fileupload-exists">Change</span><input type="file" id="file2" name="file2"/></span>
+                                                            class="fileupload-exists">Change</span><input type="file"
+                                                                                                          id="file2"
+                                                                                                          name="file2"/></span>
                                                     <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">X</a>
                                                 </div>
                                             </div>
@@ -119,7 +127,9 @@
                                                 <div>
                                                     <span class="btn btn-file"><span
                                                             class="fileupload-new">Select image</span><span
-                                                            class="fileupload-exists">Change</span><input type="file" id="file3" name="file3"/></span>
+                                                            class="fileupload-exists">Change</span><input type="file"
+                                                                                                          id="file3"
+                                                                                                          name="file3"/></span>
                                                     <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">X</a>
                                                 </div>
                                             </div>
@@ -135,11 +145,22 @@
                                 <label class="control-label" for="save">Share</label>
 
                                 <div class="controls">
-                                    <button id="save" name="save" class="btn btn-primary">Go!!!</button>
+                                    <button id="save" name="save" class="btn btn-primary" onclick="submitForm()">Go!!!
+                                    </button>
                                 </div>
                             </div>
                         </fieldset>
                     </form>
+                    <script type="text/javascript">
+                        var wasSubmitted = false;
+                        function checkBeforeSubmit() {
+                            if (!wasSubmitted) {
+                                wasSubmitted = true;
+                                return wasSubmitted;
+                            }
+                            return false;
+                        }
+                    </script>
 
 
                     <div class="clear"><!-- ClearFix --></div>
@@ -155,5 +176,5 @@
 {% endblock %}
 
 {% block footer %}
-{% include "footer.html" %}
+    {% include "footer.html" %}
 {% endblock %}
