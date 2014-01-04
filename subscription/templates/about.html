@@ -1,115 +1,129 @@
 {% extends "main.html" %}
 {% block menu %}
-{% include "mainmenu.html" %}
+    {% include "mainmenu.html" %}
 {% endblock %}
 
 {% block content %}
-<div class="content_wrapper">
-    <div class="content_block">
-        <h1><span>about our experiences</span></h1>
+    <div class="content_wrapper">
+        <div class="content_block">
+            <h1><span>about our experiences</span></h1>
 
-        <div class="contentarea">
-            <div class="row">
-                <div class="span3-3">
-                    <h3><span>Fully Facebook integrated</span></h3>
+            <div class="contentarea">
+                <div class="row">
+                    <div class="span3-3">
+                        <h3><span>Fully Facebook integrated</span></h3>
 
-                    <p><strong>Your facebook password or username is not being saved by experience of us.</strong></p>
+                        <p><strong>Your facebook password or username is not being saved by experience of us.</strong>
+                        </p>
 
-                    <p>We use facebook for user management. We use your public facebook id which is already public to
-                        everyone by facebook. </p><strong>we only save your experience </strong>
-                </div>
-                <div class="clear"><!-- ClearFix --></div>
-                <div class="span2-3">
-                    <div class="span_full">
-                        <img src="{{STATIC_URL}}img/expkuala.jpg" class="full_width">
+                        <p>We use facebook for user management. We use your public facebook id which is already public
+                            to
+                            everyone by facebook. </p><strong>we only save your experience </strong>
                     </div>
+                    <div class="clear"><!-- ClearFix --></div>
+                    <div class="span2-3">
+                        <div class="span_full">
+                            <img src="{{ STATIC_URL }}img/expkuala.jpg" class="full_width">
+                        </div>
+                    </div>
+                    <div class="span1-3">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+
+                        <h3><span>Experiences like...</span></h3>
+                        <ul class="skills_list">
+                            <li>Discovering new places
+
+                                <div style="width:100%"></div>
+                            </li>
+                            <br>
+                            <li>Finding new people
+
+                                <div style="width:100%"></div>
+                            </li>
+                            <br>
+                            <li>Learning new things
+
+                                <div style="width:100%"></div>
+                            </li>
+                            <br>
+                            <li>Tasting new foods
+
+                                <div style="width:100%"></div>
+                            </li>
+                            <br>
+                            <li>Partying all night long
+
+                                <div style="width:100%"></div>
+                            </li>
+                            <br>
+
+                        </ul>
+                    </div>
+                    <div class="clear"><!-- ClearFix --></div>
+                    <div class="span3-3">
+                        <h3><span>Who is the most experienced person?</span></h3>
+
+                        <p><strong>Most experienced person is being selected by total amount of facebook likes she or he
+                            has based on all her or his posts</strong></p>
+
+                    </div>
+                    <div class="span3-3">
+                        <h3><span>Here is couple of reason to share our experiences </span></h3>
+                        <br>
+                        <blockquote>
+                            <br>
+
+                            <p>By seeking and blundering we learn </p>
+                            <br>
+                            <span> <strong>Johann Wolfgang von Goethe</strong></span>
+                        </blockquote>
+
+                        <blockquote>
+                            <br>
+
+                            <p>Experience is one thing you can't get for nothing</p>
+                            <br>
+                            <span><strong>Oscar Wilde</strong></span>
+                        </blockquote>
+
+                        <blockquote>
+                            <br>
+
+                            <p>Nothing is a waste of time if you use the experience wisely</p>
+                            <br>
+                            <span><strong>Auguste Rodin</strong></span>
+                        </blockquote>
+
+                        <blockquote>
+                            <br>
+
+                            <p>It is beyond a doubt that all our knowledge that begins with experience</p>
+                            <br>
+                            <span><strong>Immanuel Kant </strong></span>
+                        </blockquote>
+
+                        <blockquote>
+                            <br>
+
+                            <p>Wisdom is the daughter of experience</p>
+                            <br>
+                            <span><strong>Leonardo da Vinci </strong></span>
+                        </blockquote>
+
+                    </div>
+
                 </div>
-                <div class="span1-3">
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <h3><span>Experiences like...</span></h3>
-                    <ul class="skills_list">
-                        <li>Discovering new places
-
-                            <div style="width:100%"></div>
-                        </li>
-                        <br>
-                        <li>Finding new people
-
-                            <div style="width:100%"></div>
-                        </li>
-                        <br>
-                        <li>Learning new things
-
-                            <div style="width:100%"></div>
-                        </li>
-                        <br>
-                        <li>Tasting new foods
-
-                            <div style="width:100%"></div>
-                        </li>
-                        <br>
-                        <li>Partying all night long
-
-                            <div style="width:100%"></div>
-                        </li>
-                        <br>
-
-                    </ul>
-                </div>
-                <div class="clear"><!-- ClearFix --></div>
-                <div class="span3-3">
-                    <h3><span>Here is couple of reason to share our experiences </span></h3>
-                    <br>
-                    <blockquote>
-                        <br>
-                        <p>By seeking and blundering we learn </p>
-                        <br>
-                        <span> <strong>Johann Wolfgang von Goethe</strong></span>
-                    </blockquote>
-
-                    <blockquote>
-                        <br>
-
-                        <p>Experience is one thing you can't get for nothing</p>
-                        <br>
-                        <span><strong>Oscar Wilde</strong></span>
-                    </blockquote>
-
-                    <blockquote>
-                        <br>
-                        <p>Nothing is a waste of time if you use the experience wisely</p>
-                        <br>
-                        <span><strong>Auguste Rodin</strong></span>
-                    </blockquote>
-
-                    <blockquote>
-                        <br>
-                        <p>It is beyond a doubt that all our knowledge that begins with experience</p>
-                        <br>
-                        <span><strong>Immanuel Kant </strong></span>
-                    </blockquote>
-
-                           <blockquote>
-                        <br>
-                        <p>Wisdom is the daughter of experience</p>
-                        <br>
-                        <span><strong>Leonardo da Vinci </strong></span>
-                    </blockquote>
-
-                </div>
-
+                <!-- .row -->
             </div>
-            <!-- .row -->
         </div>
+        <!-- .content_block -->
     </div>
-    <!-- .content_block -->
-</div>
 {% endblock %}
 
 {% block footer %}
-{% include "footer.html" %}
+    {% include "footer.html" %}
 {% endblock %}
