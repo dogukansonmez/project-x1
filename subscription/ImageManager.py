@@ -26,7 +26,7 @@ def getUserFolder(currentUserName):
 def save_image_files(request):
     images = []
     i = 0
-    MAX_SIZE =3000000
+    MAX_SIZE = 3000000
     if request.FILES is not None:
         for fileName,file in request.FILES.iteritems():
            if file.size<MAX_SIZE:
