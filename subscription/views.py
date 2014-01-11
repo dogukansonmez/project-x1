@@ -31,6 +31,7 @@ def about(request):
     else:
         return render_to_response('aboutus.html', context_instance=RequestContext(request))
 
+
 def aboutus(request):
     return render_to_response('aboutus.html', context_instance=RequestContext(request))
 
@@ -56,9 +57,9 @@ def experiencePage(request, id):
             itemImages = imagesOfExperience[1:]
 
         return render_to_response('experience.html',
-                              {'experience': experience, 'images': imagesOfExperience, 'activeImage': activeImage,
-                               'itemImages': itemImages},
-                              context_instance=RequestContext(request))
+                                  {'experience': experience, 'images': imagesOfExperience, 'activeImage': activeImage,
+                                   'itemImages': itemImages},
+                                  context_instance=RequestContext(request))
     else:
         return render_to_response('index.html', context_instance=RequestContext(request))
 
@@ -86,7 +87,7 @@ def isRealUser(request):
 def share(request):
     if isValidUser(request):
         if request.method == 'POST':
-            if (isValidUser(request) and isRealUser(request)):
+            if isValidUser(request) and isRealUser(request):
                 images = save_image_files(request)
                 experience = SharedExp(request.POST).getExperience(request, images)
                 experience.save()
@@ -126,8 +127,8 @@ def removeExperience(request, id):
 
 ####################################################################################
 def page_not_found(request):
-        return render_to_response('404.html', context_instance=RequestContext(request))
+    return render_to_response('404.html', context_instance=RequestContext(request))
 
 ####################################################################################
 def server_error(request):
-        return render_to_response('500.html', context_instance=RequestContext(request))
+    return render_to_response('500.html', context_instance=RequestContext(request))

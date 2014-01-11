@@ -7,36 +7,35 @@ __author__ = 'dogukansonmez'
 
 class SharedExp:
     def __init__(self, httpRequest):
-       self.title = httpRequest.get('title','')
-       self.where = httpRequest.get('where','')
-       self.when = httpRequest.get('when','')
-       self.whitWhom = httpRequest.get('withwhom','')
-       #self.vote = httpRequest.get('radios','')
-       self.description = httpRequest.get('description','')
+        self.title = httpRequest.get('title', '')
+        self.where = httpRequest.get('where', '')
+        self.when = httpRequest.get('when', '')
+        self.whitWhom = httpRequest.get('withwhom', '')
+        #self.vote = httpRequest.get('radios','')
+        self.description = httpRequest.get('description', '')
 
 
-    def getDate(self,expDate):
+    def getDate(self, expDate):
         try:
-            return datetime.strptime(expDate , '%m/%d/%Y')
+            return datetime.strptime(expDate, '%m/%d/%Y')
         except ValueError:
-            return datetime.strptime("01/01/2000" , '%m/%d/%Y')
+            return datetime.strptime("01/01/2000", '%m/%d/%Y')
 
 
-    def getExperience(self,request,images):
-
+    def getExperience(self, request, images):
         experience = Experience()
         experience.name = self.title
         experience.title = self.title
         experience.where = self.where
-        experience.when =  self.getDate(str(self.when))
+        experience.when = self.getDate(str(self.when))
         experience.withWhom = self.whitWhom
         experience.description = self.description
         #experience.vote = self.vote
         if len(images) > 0:
             experience.img_links = ','.join(images)
-            experience.type='typeA'
+            experience.type = 'typeA'
         else:
-            experience.type='typeB'
+            experience.type = 'typeB'
         currentUser = get_user(request)
         try:
             user = User.objects.get(userID=str(currentUser.username))

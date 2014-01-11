@@ -2,7 +2,6 @@
 import os
 
 
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -13,30 +12,36 @@ TEMPLATE_DIRS = (
 )
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+# ('Your Name', 'your_email@example.com'),
 )
 
+FACEBOOK_APP_ID = '295920973880937'
+FACEBOOK_API_SECRET = '68e35f0c9821e5551afde53f11cfa097'
 
-FACEBOOK_APP_ID='295920973880937'
-FACEBOOK_API_SECRET='68e35f0c9821e5551afde53f11cfa097'
-
-LOGIN_URL          = '/login/'
+LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
-LOGIN_ERROR_URL    = '/login-error/'
+LOGIN_ERROR_URL = '/login-error/'
 
 SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/share'
 
 MANAGERS = ADMINS
 
+FILE_UPLOAD_MAX_MEMORY_SIZE = 2 * 1024 * 1024  # 2MB
+
+FILE_UPLOAD_HANDLERS = (
+    "django.core.files.uploadhandler.MemoryFileUploadHandler",
+    "django.core.files.uploadhandler.TemporaryFileUploadHandler",
+)
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'testdb',                      # Or path to database file if using sqlite3.
+        'NAME': 'testdb', # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+        'HOST': '', # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '', # Set to empty string for default.
     }
 }
 
@@ -93,9 +98,9 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+# Put strings here, like "/home/html/static" or "C:/www/django/static".
+# Always use forward slashes, even on Windows.
+# Don't forget to use absolute paths, not relative paths.
 )
 
 # List of finder classes that know how to find static files in
@@ -103,7 +108,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -113,7 +118,7 @@ SECRET_KEY = '#x+$v7vjv@b^m&3+3jv89qbemkpy($wwm&xwvfxe)rx5*4=xb_'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -132,9 +137,9 @@ ROOT_URLCONF = 'exofus.urls'
 WSGI_APPLICATION = 'exofus.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+# Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+# Always use forward slashes, even on Windows.
+# Don't forget to use absolute paths, not relative paths.
 )
 
 INSTALLED_APPS = (
