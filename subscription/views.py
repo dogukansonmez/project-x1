@@ -45,21 +45,25 @@ def getExperienceImages(img_links):
 ####################################################################################
 def experiencePage(request, id):
     if isValidUser(request):
-        experience = Experience.objects.get(pk=id)
-        #TODO check out if experience is null or not
-        imagesOfExperience = getExperienceImages(experience.img_links)
-        itemImages = []
-        activeImage = ""
-        if len(imagesOfExperience) > 0:
-            activeImage = imagesOfExperience[0]
+        try:
+            experience = Experience.objects.get(pk=id)
+            #TODO check out if experience is null or not
+            imagesOfExperience = getExperienceImages(experience.img_links)
+            itemImages = []
+            activeImage = ""
+            if len(imagesOfExperience) > 0:
+                activeImage = imagesOfExperience[0]
 
-        if len(imagesOfExperience) > 1:
-            itemImages = imagesOfExperience[1:]
+            if len(imagesOfExperience) > 1:
+                itemImages = imagesOfExperience[1:]
 
-        return render_to_response('experience.html',
+            return render_to_response('experience.html',
                                   {'experience': experience, 'images': imagesOfExperience, 'activeImage': activeImage,
                                    'itemImages': itemImages},
                                   context_instance=RequestContext(request))
+        except ObjectDoesNotExist:
+            return render_to_response('404.html', context_instance=RequestContext(request))
+
     else:
         return render_to_response('index.html', context_instance=RequestContext(request))
 
