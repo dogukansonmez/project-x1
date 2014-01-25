@@ -121,11 +121,29 @@ def my_experiences(request):
         return render_to_response('index.html', context_instance=RequestContext(request))
 
 ####################################################################################
+
+
+def is_user_authorized(request, id):
+    current_user = get_user(request)
+    experience = Experience.objects.get(pk=id)
+    exp_owner = experience.owner
+    if current_user.username == exp_owner.userID:
+        return True
+    else:
+        return False
+
+####################################################################################
+
+
 def removeExperience(request, id):
     if isValidUser(request):
-        Experience.objects.filter(id=id).delete()
-        response = redirect('subscription.views.my_experiences')
-        return response
+        if is_user_authorized(request, id):
+            Experience.objects.filter(id=id).delete()
+            response = redirect('subscription.views.my_experiences')
+            return response
+        else:
+            print("user trying to remove another user's experience")
+            return home(request)
     else:
         return render_to_response('index.html', context_instance=RequestContext(request))
 
